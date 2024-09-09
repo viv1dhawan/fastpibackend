@@ -25,7 +25,7 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 pwd_context = CryptContext(schemes=["bcrypt"], default="bcrypt")
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
 
-SECRET_KEY = "your_secret_key_here"
+SECRET_KEY = "234QWERTY123"
 ALGORITHM = "HS256"
 
 def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
@@ -106,45 +106,3 @@ async def get_current_user(token: str = Depends(oauth2_scheme)):
 @app.get("/protected")
 async def protected_route(user: User = Depends(get_current_user)):
     return {"message": f"Hello, {user.email}!"}
-
-@app.get("/", response_class=HTMLResponse)
-async def read_index():
-    with open("static/index.html") as f:
-        content = f.read()
-    return HTMLResponse(content=content)
-
-@app.get("/login-page", response_class=HTMLResponse)
-async def read_login_page():
-    with open("static/login.html") as f:
-        content = f.read()
-    return HTMLResponse(content=content)
-
-@app.get("/signup-page", response_class=HTMLResponse)
-async def read_signup_page():
-    with open("static/signup.html") as f:
-        content = f.read()
-    return HTMLResponse(content=content)
-
-@app.get("/forget-password-page", response_class=HTMLResponse)
-async def read_forget_password_page():
-    with open("static/forget-password.html") as f:
-        content = f.read()
-    return HTMLResponse(content=content)
-
-@app.get("/reset-password-page", response_class=HTMLResponse)
-async def read_reset_password_page():
-    with open("static/reset-password.html") as f:
-        content = f.read()
-    return HTMLResponse(content=content)
-
-@app.get("/verify-account-page", response_class=HTMLResponse)
-async def read_verify_account_page():
-    with open("static/verify-account.html") as f:
-        content = f.read()
-    return HTMLResponse(content=content)
-
-@app.get("/about-page", response_class=HTMLResponse)
-async def read_about_page():
-    with open("static/about.html") as f:
-        content = f.read()
-    return HTMLResponse(content=content)
