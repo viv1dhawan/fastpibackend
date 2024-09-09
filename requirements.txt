@@ -1,0 +1,6 @@
+fastapi
+sqlalchemy
+passlib
+pydantic
+uvicorn
+python-jose
