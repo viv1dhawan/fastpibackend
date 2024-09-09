@@ -4,3 +4,4 @@ passlib
 pydantic
 uvicorn
 python-jose
+email-validator
