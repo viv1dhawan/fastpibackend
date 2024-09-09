@@ -19,9 +19,6 @@ app = FastAPI()
 # Create all tables based on the imported models
 Base.metadata.create_all(bind=engine)
 
-# Serve static files from the 'static' directory
-app.mount("/static", StaticFiles(directory="static"), name="static")
-
 pwd_context = CryptContext(schemes=["bcrypt"], default="bcrypt")
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
 
